@@ -1,6 +1,6 @@
 // Typing Animation
 const typing = document.querySelector(".typing");
-const text = ["Eeshanee", "a Full Stack Developer", "a Machine Learning Enthusiast", "a Data Science Enthusiast",];
+const text = ["Eeshanee", "a Developer", "a Blockchain Enthusiast", "a Data Scientist", "a Machine Learning Engineer"];
 let i = 0, j = 0, isDeleting = false;
 
 function type() {
@@ -28,4 +28,26 @@ document.querySelectorAll('nav a').forEach(anchor => {
             behavior: 'smooth'
         });
     });
+});
+
+// Fade-In Effect for Sections
+const sections = document.querySelectorAll("section");
+
+const fadeInOptions = {
+    threshold: 0.1
+};
+
+const fadeInObserver = new IntersectionObserver(function(entries, fadeInObserver) {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("fade-in");
+        fadeInObserver.unobserve(entry.target);
+    });
+}, fadeInOptions);
+
+sections.forEach(section => {
+    fadeInObserver.observe(section);
+});
+particlesJS.load("particles-js", "particles-config.json", function () {
+    console.log("Particles.js loaded successfully!");
 });
